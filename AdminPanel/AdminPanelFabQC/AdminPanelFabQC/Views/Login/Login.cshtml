@@ -1,0 +1,44 @@
+﻿@model AdminPanelFabQC.Models.LoginDetails
+@{
+    ViewBag.Title = "Login";
+    
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Login failed. Check your login details.");
+    <div>
+        <fieldset>
+            <legend>Login</legend>
+            @if(Model !=null && Model.showError == "true")
+            {
+            <div class="editor-label">
+                @Html.LabelFor(u => u.showError)
+            </div>
+            }
+            <div class="editor-label">
+                @Html.LabelFor(u => u.userName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(u => u.userName)
+                @Html.ValidationMessageFor(u => u.userName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(u => u.pwd)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(u => u.pwd)
+                @Html.ValidationMessageFor(u => u.pwd)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(u => u.companyId)
+            </div>
+            <div class="editor-label">
+                @Html.TextBoxFor(u => u.companyId)
+                @Html.ValidationMessageFor(u => u.companyId)
+            </div>
+            <input type="submit" value="Log In" />
+        </fieldset>
+    </div>
+}
